@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "express-minimal-starter",
+  "version": "0.1.0",
+  "license": "ISC",
+  "author": "chollasit-dev",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node src/server.js",
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  },
+  "packageManager": "pnpm@10.6.3",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
