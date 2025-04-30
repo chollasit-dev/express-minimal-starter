@@ -13,6 +13,8 @@ try {
 }
 
 export const config = {
+  CORS_ALLOW_ORIGIN: process.env.CORS_ALLOW_ORIGIN ?? '*',
+  CORS_CREDENTIALS: Boolean(process.env.CORS_CREDENTIALS) ?? false, // NOTE: set `true` to use cookies
   HOSTNAME: process.env.HOSTNAME ?? 'http://127.0.0.1',
   MONGO_URI: process.env.MONGO_URI ?? 'mongodb://localhost:27017',
   PORT: process.env.PORT ?? 3000,
