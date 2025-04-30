@@ -9,10 +9,16 @@
   "scripts": {
     "dev": "nodemon",
     "start": "node src/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "express": "^5.1.0",
     "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.0",
+    "vitest": "^3.1.2"
   },
   "packageManager": "pnpm@10.6.3",
   "pnpm": {
