@@ -1,4 +1,4 @@
-import { NODE_ENV } from '../../../app.js';
+import { config } from '../../../config/env.js';
 import { ResponseConstructor } from '../../../utils/response.js';
 
 /** @type {import('express').ErrorRequestHandler} */
@@ -7,7 +7,7 @@ export const errorMiddleware = (err, req, res, next) => {
   const error = {
     ...err,
     message: err.message,
-    stack: NODE_ENV === 'production' ? undefined : err.stack,
+    stack: config.NODE_ENV === 'production' ? undefined : err.stack,
   };
 
   res

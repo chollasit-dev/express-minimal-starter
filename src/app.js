@@ -7,8 +7,6 @@ import { healthcheckRoutes } from './api/v1/routes/healthcheckRoutes.js';
 
 import helmet from 'helmet';
 import { corsOptions } from './config/cors.js';
-import { NODE_ENV, config } from './config/env.js';
-const { HOSTNAME, PORT } = config;
 
 const app = express();
 
@@ -21,4 +19,4 @@ app.use('/healthcheck', healthcheckRoutes);
 
 app.use(errorMiddleware);
 
-export { HOSTNAME, NODE_ENV, PORT, app, config };
+export { app };

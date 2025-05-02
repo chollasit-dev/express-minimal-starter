@@ -1,4 +1,7 @@
-import { app, HOSTNAME, PORT } from './app.js';
+import { app } from './app.js';
+import { config } from './config/env.js';
+
+const { HOSTNAME, PORT } = config;
 
 app.listen(PORT, (err) => {
   if (err) {
