@@ -4,7 +4,7 @@ import { config, NODE_ENV } from '../config/env.js';
 
 export const db = drizzle({
   connection: {
-    url: config.TURSO_URI,
+    url: config.TURSO_DATABASE_URL,
     authToken: config.TURSO_AUTH_TOKEN,
   },
 });
