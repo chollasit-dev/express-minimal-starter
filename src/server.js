@@ -1,17 +1,17 @@
 import { app } from './app.js';
-import { initializeDb } from './config/db.js';
 import { config } from './config/env.js';
 import * as mongoDb from './config/mongo.js';
+import * as turso from './config/turso.js';
 
-await initializeDb();
+await turso.initializeDb();
 await mongoDb.initializeDb();
 
 const { HOSTNAME, PORT } = config;
 app.listen(PORT, (err) => {
   if (err) {
-    console.error(err.message);
+    console.error(`[Server]: ${err.message}`);
     process.exit(1);
   }
 
-  console.log(`Server is running on ${HOSTNAME}:${PORT}`);
+  console.log(`[Server]: running at ${HOSTNAME}:${PORT}`);
 });
