@@ -10,9 +10,9 @@ export const loadConfig = () => {
     process.loadEnvFile(
       NODE_ENV === 'development' ? '.env.local' : '.env.production',
     );
-    console.log(`Loaded ${NODE_ENV} environment variables`);
+    console.log(`[Server]: ${NODE_ENV} environment variables loaded`);
   } catch (error) {
-    console.error('Unable to load environment variables');
+    console.error('[Server]: Unable to load environment variables');
   }
 };
 loadConfig();
