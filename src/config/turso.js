@@ -12,7 +12,7 @@ export const db = drizzle({
 const pingConnection = async () => {
   const result = await db.run(sql`SELECT 1;`);
   if (!result.rows.length) {
-    console.error('[Database]: Unable to ping to the database');
+    console.error('[Database]: Unable to connect Turso');
     process.exit(1);
   }
   console.log(
