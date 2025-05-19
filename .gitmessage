@@ -1,0 +1,55 @@
+
+
+# <type>[optional scope]: <description>
+# |<----  Using a Maximum Of 50 Characters  ---->|
+#
+# Explain why this change is being made
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+#
+# Provide links or keys to any relevant tickets, articles or other resources
+# Example: Refs: #123, #456, Closes: #789
+#
+# --- COMMIT END ---
+# Type can be
+#    feat     (new feature)
+#    fix      (bug fix)
+#    docs     (changes to documentation)
+#    style    (formatting, missing semi colons, etc; no code change)
+#    refactor (refactoring production code)
+#    perf     (performance improvements)
+#    test     (adding missing tests, refactoring tests)
+#    build    (changes to build process, npm scripts, etc)
+#    ci       (changes to CI configuration)
+#    chore    (updating grunt tasks etc; no production code change)
+#    revert   (reverting a previous commit)
+#    db       (database schema or query changes)
+#    security (addressing security concerns)
+#
+# Scope can be
+#    api        (changes to API endpoints)
+#    route      (changes to route handlers)
+#    controller (changes to controller logic)
+#    middleware (changes to Express middleware)
+#    model      (changes to data models)
+#    schema     (changes to validation schemas)
+#    auth       (authentication-related changes)
+#    db         (database-related changes)
+#    cache      (caching mechanisms)
+#    queue      (message queue implementations)
+#    config     (configuration changes)
+#    util       (utility functions)
+#    logger     (logging functionality)
+#    error      (error handling)
+#    security   (security-related changes)
+#    validation (input validation)
+#    service    (business logic services)
+#    job        (background jobs or scheduled tasks)
+#    deps       (dependency updates)
+#
+# Remember to:
+#   * Capitalize the subject line
+#   * Use the imperative mood in the subject line
+#   * Do not end the subject line with a period
+#   * Separate subject from body with a blank line
+#   * Use the body to explain what and why vs. how
+#   * Can use multiple lines with "-" for bullet points in body
