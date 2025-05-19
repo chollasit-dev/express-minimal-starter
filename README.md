@@ -31,13 +31,28 @@ pnpm install
 
 ### Environment Setup
 
-1. Copy the example environment file:
+1. create `.env` to define an initial variable for loading environment
+   dynamically when developing:
 
 ```sh
-cp .env.example .env
+NODE_ENV=development
+
+# Or for production (testing)
+NODE_ENV=production
 ```
 
-2. Edit the `.env` file and fill in your actual configuration values.
+2. Copy the example environment file:
+
+```sh
+#
+cp .env.example .env.local
+
+# Or for production (testing)
+cp .env.example .env.production
+```
+
+3. Edit either `.env.local` or `.env.production` and fill in your actual
+   configuration values:
 
 ### Start the development server
 
