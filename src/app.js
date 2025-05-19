@@ -3,7 +3,7 @@ import express, { json } from 'express';
 
 import { errorMiddleware } from './api/v1/middlewares/errorMiddleware.js';
 import { loggerMiddlewares } from './api/v1/middlewares/loggerMiddleware.js';
-import { healthcheckRoutes } from './api/v1/routes/healthcheckRoutes.js';
+import { indexRoutes } from './api/v1/routes/indexRoutes.js';
 
 import helmet from 'helmet';
 import { corsOptions } from './config/cors.js';
@@ -15,7 +15,7 @@ app.use(cors(corsOptions));
 app.use(json());
 app.use(loggerMiddlewares);
 
-app.use('/healthcheck', healthcheckRoutes);
+app.use('/', indexRoutes);
 
 app.use(errorMiddleware);
 
