@@ -1,4 +1,5 @@
 import { randomBytes } from 'crypto';
+import { logger } from '../utils/logger.js';
 
 export let NODE_ENV;
 
@@ -6,13 +7,13 @@ export const loadConfig = () => {
   try {
     process.loadEnvFile();
     NODE_ENV = process.env.NODE_ENV ?? 'development';
-    console.log(`[Server]: NODE_ENV loaded`);
+    logger('info', '[Server]', 'NODE_ENV loaded');
     process.loadEnvFile(
       NODE_ENV === 'development' ? '.env.local' : '.env.production',
     );
-    console.log(`[Server]: ${NODE_ENV} environment variables loaded`);
+    logger('info', '[Server]', `Environment loaded: ${NODE_ENV}`);
   } catch (error) {
-    console.error('[Server]: Unable to load environment variables');
+    logger('error', '[Server]', 'Failed to load environment');
     process.exit(1);
   }
 };

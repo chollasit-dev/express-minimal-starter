@@ -1,37 +1,50 @@
 import mongoose from 'mongoose';
+import { logger } from '../utils/logger.js';
 import { config } from './env.js';
 
 /** @param {mongoose.Mongoose} mongoDb */
-export const pingConnection = async (mongoDb) => {
+const pingConnection = async (mongoDb) => {
   try {
     const result = await mongoDb.connection.db.admin().ping();
-    console.log(`[Database]: Ping connection successfully: ${result.ok}`);
+    logger('info', '[Database]', `Ping MongoDB successfully: ${result.ok}`);
   } catch (error) {
-    console.error(
-      `[Database]: Unable to ping MongoDB
-${error.name}: ${error.message}`,
+    logger(
+      'error',
+      '[Database]',
+      `Failed to ping MongoDB: ${error.name}: ${error.message}`,
     );
     process.exit(1);
   }
 };
 
-export const initializeDb = async () => {
+const connectDb = async () => {
   try {
     const mongoDb = await mongoose.connect(config.MONGO_URI, {
       autoCreate: false,
+      autoIndex: false,
       bufferCommands: true,
       retryWrites: true,
       writeConcern: {
         w: 'majority',
       },
     });
-    console.log(`[Database]: MongoDB connected: ${mongoDb.connection.name}`);
-    await pingConnection(mongoDb);
+    logger(
+      'info',
+      '[Database]',
+      `MongoDB connected: ${mongoDb.connection.name}`,
+    );
+    return mongoDb;
   } catch (error) {
-    console.error(
-      `[Database]: Unable to connect MongoDb
-${error.name}: ${error.message}`,
+    logger(
+      'error',
+      '[Database]',
+      `Failed to connect MongoDB: ${error.name}: ${error.message}`,
     );
     process.exit(1);
   }
+};
+
+export const initializeDb = async () => {
+  const mongoDb = await connectDb();
+  await pingConnection(mongoDb);
 };

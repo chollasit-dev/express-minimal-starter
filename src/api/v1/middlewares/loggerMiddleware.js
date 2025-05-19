@@ -1,12 +1,14 @@
+import { logger } from '../../../utils/logger.js';
+
 /** @type {import('express').RequestHandler} */
 const logMethod = (req, _, next) => {
-  console.log(req.method);
+  logger('info', '[Server]', `Method: ${req.method}`);
   next();
 };
 
 /** @type {import('express').RequestHandler} */
 const logOriginalUrl = (req, _, next) => {
-  console.log(req.originalUrl);
+  logger('info', '[Server]', `URI: ${req.originalUrl}`);
   next();
 };
 

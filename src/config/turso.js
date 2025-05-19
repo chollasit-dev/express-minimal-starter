@@ -1,6 +1,7 @@
 import { sql } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/libsql';
 import { config, NODE_ENV } from '../config/env.js';
+import { logger } from '../utils/logger.js';
 
 export const db = drizzle({
   connection: {
@@ -10,20 +11,19 @@ export const db = drizzle({
 });
 
 const pingConnection = async () => {
-  const result = await db.run(sql`SELECT 1;`);
-  if (!result.rows.length) {
-    console.error('[Database]: Unable to connect Turso');
+  try {
+    const result = await db.run(sql`SELECT 1;`);
+    const dbType = NODE_ENV === 'development' ? 'SQLite3' : 'Turso';
+    logger('info', '[Database]', `Test ${dbType} successfully`);
+  } catch (error) {
     process.exit(1);
   }
-  console.log(
-    `[Database]: ${NODE_ENV === 'development' ? 'Test' : 'Ping'} connection successfully`,
-  );
 };
 
 export const initializeDb = async () => {
   await pingConnection();
   if (NODE_ENV === 'development') {
     await db.run(sql`PRAGMA foreign_keys = 1;`);
-    console.log('[Database]: Foreign keys enabled');
+    logger('info', '[Database]', 'Foreign keys enabled');
   }
 };
