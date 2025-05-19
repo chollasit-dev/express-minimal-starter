@@ -1,5 +1,0 @@
-name: success
-url: http://localhost:3000/healthcheck
-params:
-- name: checkType
-  value: success
